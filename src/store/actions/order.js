@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
 
-// Synchronous action creators
+// 3 Synchronous action creators
 export const purchaseBurgerSuccess = (id, orderData) => {
     return {
         type: actionTypes.PURCHASE_BURGER_SUCCESS,
@@ -24,15 +24,18 @@ export const purchaseBurgerStart = () => {
     }
 }
 
+
+
+
 // Asynchronous action creators using 'redux-thunk': 
 // in the function body we can execute async code(link to axios), then it will dispatch a 
 // new action whenever the async code(link to axios) is done
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, token) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json', orderData)
+        axios.post('/orders.json?auth=' + token, orderData)
             .then(response => {
-               dispatch(purchaseBurgerSuccess(response.data.name, orderData));
+                dispatch(purchaseBurgerSuccess(response.data.name, orderData));
             })
             .catch(error => {
                 dispatch(purchaseBurgerFail(error));
@@ -67,22 +70,26 @@ export const fetchOrdersStart = () => {
     };
 };
 
-export const fetchOrders = () => {
+export const fetchOrders = (token, userId) => {
     return dispatch => {
         dispatch(fetchOrdersStart());
-        axios.get("/orders.json")
-        .then(res => {
-            let fetchedOrders = [];
-            for (let key in res.data) {
-                fetchedOrders.push({
-                    ...res.data[key],
-                    id: key
-                });
-            }
-            dispatch(fetchOrdersSuccess(fetchedOrders));
-        })
-        .catch(error => {
-            dispatch(fetchOrdersFail(error));
-        });
+        // "orderBy" is understood by firebase, it makes firebase to filter data
+        // according to the "userId". To do this, we also need to set rules on the 
+        // firebase: ".indexOn": ["userId"]
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        axios.get("/orders.json" + queryParams)
+            .then(res => {
+                let fetchedOrders = [];
+                for (let key in res.data) {
+                    fetchedOrders.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+                dispatch(fetchOrdersSuccess(fetchedOrders));
+            })
+            .catch(error => {
+                dispatch(fetchOrdersFail(error));
+            });
     }
 }
