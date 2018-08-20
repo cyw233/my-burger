@@ -5,16 +5,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class Logout extends Component {
-    componentWillMount() {
-        console.log("will mount");
-    }
     componentDidMount() {
-        console.log("did mount");
         this.props.onLogout();
     }
 
     render() {
-        console.log("render");
         return <Redirect to="/" />
     };
 }
