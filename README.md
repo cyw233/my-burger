@@ -18,11 +18,11 @@ $ npm start
 
 **1. Build a Burger**
 
-Users can add Ingredients and remove ingredients  to build their favorite burgers. The current price is also displayed below the burger.
+Users can add Ingredients and remove ingredients to build their favorite burgers. The current price is also displayed below the burger.
 
 **2. Authenticate**
 
-Users can sign up or sign in by clicking *Authenticate* on the navbar. Only users that have signed in can continue to make an order.
+Users can sign up or sign in by clicking *Authenticate* on the navbar and click *Switch To SIGNUP* or *SWITCH TO SIGNIN*. Only users that have signed in can continue to make an order.
 
 **3. Make Orders**
 
