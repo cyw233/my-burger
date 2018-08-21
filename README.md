@@ -22,7 +22,7 @@ Users can add Ingredients and remove ingredients to build their favorite burgers
 
 **2. Authenticate**
 
-Users can sign up or sign in by clicking *Authenticate* on the navbar and click *Switch To SIGNUP* or *SWITCH TO SIGNIN*. Only users that have signed in can continue to make an order.
+Users can sign up or sign in by clicking *Authenticate* on the navbar and click *SWITCH TO SIGNUP* or *SWITCH TO SIGNIN*. Only users that have signed in can continue to make an order.
 
 **3. Make Orders**
 
