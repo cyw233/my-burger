@@ -3,6 +3,8 @@ A **[create-react-app](https://github.com/facebook/create-react-app)** with **[R
 
 This app is deployed using **[Firebase](https://firebase.google.com/)** Hosting, and the database of this app is also managed by the Realtime Databae of Firebase.
 
+# Usage
+
 1. Clone or download this repo.
 2. Make sure you have [Node.js](https://nodejs.org/en/) installed  
 3. Run the following commands to install required library packages and start the app
