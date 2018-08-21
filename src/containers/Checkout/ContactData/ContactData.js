@@ -42,13 +42,13 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Zip Code'
+                    placeholder: 'Zip Code (4 digits only)'
                 },
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 5,
-                    maxLength: 5
+                    minLength: 4,
+                    maxLength: 4
                 },
                 valid: false,
                 touched: false
